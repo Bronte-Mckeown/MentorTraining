@@ -459,13 +459,6 @@ ggsave("codes_overall_top15.png",
        units = "cm", dpi = 600)
 
 ################################################################################
-# # Identify rows with a 1 in any of the columns asking for more time in some form
-request_for_time_cols <- c("time_general", "time_additional", "time_protected",
-                           "time_ppa", "time_noncontact", "time_release")
-# request_for_time_cols_rows <- apply(df[, request_for_time_cols], 1, function(row) any(row == 1))
-
-requests_for_time <- flexible_percentages(df, request_for_time_cols)
-sort_by(requests_for_time, requests_for_time$Percentage)
 
 # Vector of column names which we want to calculate percentages for
 time_for_columns <- c("time_meetings", "time_checkIns", "time_observations", "time_feedback", 
@@ -474,20 +467,6 @@ time_for_columns <- c("time_meetings", "time_checkIns", "time_observations", "ti
 WHAT_time_is_wanted_for <- flexible_percentages(df, time_for_columns)
 sort_by(WHAT_time_is_wanted_for, WHAT_time_is_wanted_for$Percentage)
 
-# Can also just look at all time categories
-# Identify rows with a 1 in any of the columns asking for time in some form
-time_all_columns <-  grep("^time_", names(df), value = TRUE)
-
-all_time <-flexible_percentages(df, time_all_columns)
-sort_by(all_time, all_time$Percentage)
-
-write.csv(all_time, "allTime_percentages.csv")
-
-## all salary
-salary_all_columns <-  grep("^moneySalary_", names(df), value = TRUE)
-
-all_salary <-flexible_percentages(df, salary_all_columns)
-sort_by(all_salary, all_salary$Percentage)
 
 ## all training
 training_all_columns <-  grep("^training_", names(df), value = TRUE)
@@ -495,11 +474,3 @@ training_all_columns <-  grep("^training_", names(df), value = TRUE)
 all_training <-flexible_percentages(df, training_all_columns)
 sort_by(all_training, all_training$Percentage)
 write.csv(all_training, "allTraining_percentages.csv")
-
-## all money
-money_all_columns <-  grep("^money", names(df), value = TRUE)
-
-all_money <-flexible_percentages(df, money_all_columns)
-sort_by(all_money, all_money$Percentage)
-
-write.csv(all_money, "allMoney_percentages.csv")
