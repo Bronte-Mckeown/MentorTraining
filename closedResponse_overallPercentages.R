@@ -9,7 +9,7 @@ overall_barplot <- function(data, x_label_list){
   fontsize = 7
   
   ggplot(data, aes(x = reorder(Option,-Percentage), y = Percentage)) +
-    geom_bar(position = "dodge", stat = "identity", color = "black", size = 0.7, fill = "#007559") +
+    geom_bar(position = "dodge", stat = "identity", color = "black", size = 0.7, fill = "grey") +
     geom_errorbar(aes(ymin = ifelse(CI_Lower < 0, 0, CI_Lower),
                       ymax = ifelse(CI_Upper > 100, 100, CI_Upper)), width = 0.25, 
                   position = position_dodge(0.9), color = "black") +
@@ -51,6 +51,6 @@ overall_bar <- overall_barplot(data, x_labels)
 overall_bar
 
 # Save to results folder
-ggsave("results/closedResponse_overall_bar_007559.png",
+ggsave("results/closedResponse_overall_bar.png",
        plot = overall_bar, width = 30, height = 10,
        units = "cm", dpi = 600)
