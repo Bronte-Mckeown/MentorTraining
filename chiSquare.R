@@ -275,9 +275,8 @@ for (demographic_name in names(all_results_list)) {
   }
 }
 
-# Use format_table to "prettify" data frames
+# Use format_table to "prettify" data frame
 chi_results_table <-insight::format_table(chi_results_table, stars = TRUE)
-fishers_results_table <-insight::format_table(fishers_results_table, stars = TRUE)
 
 # Order chi table so that within each demographic, questions are ordered according 
 # to effect size
@@ -325,13 +324,3 @@ chi_doc <- read_docx() %>%
   body_add_par("Chi-Squared Results Table", style = "Normal")
 
 print(chi_doc, target = "results/teacherTapp_quant/chi_results_table.docx")
-
-# Now create flex table of fishers and save as word document
-fishers_ft <- flextable(fishers_results_table)
-fishers_ft
-
-fishers_doc <- read_docx() %>%
-  body_add_flextable(fishers_ft) %>%
-  body_add_par("Fisher's exact Results Table", style = "Normal")
-
-print(fishers_doc, target = "results/teacherTapp_quant/fishers_results_table.docx")
