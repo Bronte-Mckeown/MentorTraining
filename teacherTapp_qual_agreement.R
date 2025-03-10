@@ -58,57 +58,37 @@ column_results <- data.frame(
   Code_Percent_Agreement = column_agreement$percent
 )
 
-# Calculate row-wise agreement
-row_agreement <- calculate_agreement(ratings1, ratings2, by = "row")
-row_results <- data.frame(
-  Answer = rater1$answer,
-  Kappa = row_agreement$kappa,
-  Percent_Agreement = row_agreement$percent
-)
-
 ################################################################################
 
 ## Visualise and summarise the agreement levels
 
 # Figure out kappa agreement levels
 code_agreement_levels <- agreement_levels(column_results$Code_Kappa, ncol(ratings1))
-row_agreement_levels <- agreement_levels(row_results$Kappa, nrow(ratings1))
 
 # Create pie charts
 code_pie_chart <- create_pie_chart(code_agreement_levels,
                                    "Per-Code")
-row_pie_chart <- create_pie_chart(row_agreement_levels,
-                                  "Per-Response")
 
 # Collate pie charts and save
-all_pie <- code_pie_chart + row_pie_chart + plot_layout(guides = "collect") & 
+all_pie <- code_pie_chart & 
   theme(legend.position = 'bottom')
 all_pie <- all_pie +plot_annotation(
   title = "Inter-rater agreement: Cohen's Kappa"
 )
 all_pie
 
-ggsave("results/teacherTapp_qual/manual_coding/cohensKappa_pieCharts.png", dpi = 600, units = "cm",
+ggsave("results/teacherTapp_qual/manual_coding/cohensKappa_pieChart.png", dpi = 600, units = "cm",
        width = 20, height = 10)
 
 # Calculate combined percentages for code and row agreement levels
 combined_code_percentages <- calculate_combined_percentages(code_agreement_levels)
-combined_row_percentages <- calculate_combined_percentages(row_agreement_levels)
 
 # Display combined percentages
 print(combined_code_percentages)
-print(combined_row_percentages)
 
 ################################################################################
-# Calculate average Kappa and % agreement
+# Calculate average Kappa
 average_code_kappa <- mean(column_results$Code_Kappa)
-average_row_kappa <- mean(row_results$Kappa)
-overall_average_kappa <- mean(c(average_code_kappa, average_row_kappa))
-
-# Alternatively, flatten matrices to calculate overall kappa and percent agreement
-overall_combined <- cbind(as.vector(as.matrix(ratings1)), as.vector(as.matrix(ratings2)))
-overall_kappa <- kappa2(overall_combined, "unweighted")$value
-overall_percent_agreement <- agree(overall_combined)$value
 
 ################################################################################
 
