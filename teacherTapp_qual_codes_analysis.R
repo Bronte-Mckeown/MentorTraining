@@ -78,7 +78,7 @@ overall_barplot <- function(data, x_label_list, x_title){
   fontsize = 7
   
   ggplot(data, aes(x = reorder(code,-Percentage), y = Percentage)) +
-    geom_bar(position = "dodge", stat = "identity", color = "black", fill = "#007559", size = 0.7) +
+    geom_bar(position = "dodge", stat = "identity", color = "black", fill = "grey", size = 0.7) +
     geom_errorbar(aes(ymin = ifelse(CI_Lower < 0, 0, CI_Lower),
                       ymax = ifelse(CI_Upper > 100, 100, CI_Upper)), width = 0.25, 
                   position = position_dodge(0.9), color = "black") +
@@ -360,14 +360,14 @@ metaPercent_by_phase_collapsed_role <- counts_percent_by_group(df_collapsed, "ph
 ################################################################################
 # Overall bar plots with meta-codes
 metaCodes_overall_bar <- overall_barplot(all_metaPercent, meta_wordcloud_labels,
-                                         "Primary Code")
+                                         "Primary Theme")
 ggsave("metaCodes_overall_bar.png",
        plot = metaCodes_overall_bar, width = 20, height = 7,
        units = "cm", dpi = 600)
 
 # Grouped bar plots with meta-codes
 metaCodes_phase_role <- grouped_barplot(metaPercent_by_phase_collapsed_role,
-                "phase_role", meta_wordcloud_labels, "Primary Code")
+                "phase_role", meta_wordcloud_labels, "Primary Theme")
 
 ggsave("metaCodes_phase_role.png",
        plot = metaCodes_phase_role , width = 30, height = 20,
@@ -387,7 +387,7 @@ metaPercent_by_phase$Variable <- factor(metaPercent_by_phase$Variable,
                                                             "flexibility",
                                                             "QA"))
 metaCodes_phase <- grouped_barplot(metaPercent_by_phase,
-                                        "phase", meta_wordcloud_labels, "Primary Code")
+                                        "phase", meta_wordcloud_labels, "Primary Theme")
 
 ggsave("metaCodes_phase.png",
        plot = metaCodes_phase , width = 20, height = 7,
@@ -410,7 +410,7 @@ metaPercent_by_collapsed_role$Variable <- factor(metaPercent_by_collapsed_role$V
                                                                      "QA"))
 
 metaCodes_collapsed_role <-grouped_barplot(metaPercent_by_collapsed_role,
-                "collapsed_role", meta_wordcloud_labels, "Primary Code")
+                "collapsed_role", meta_wordcloud_labels, "Primary Theme")
 
 ggsave("metaCodes_collapsed_role.png",
        plot = metaCodes_collapsed_role, width = 20, height = 7,
