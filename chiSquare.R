@@ -32,15 +32,13 @@ all(colnames(moe) == colnames(n_responders))
 ################################################################################
 ## Set variables for analysis
 
-# Set vector of demographic strings of interest (currently 9 total)
-# Chi-square/Fisher's tests will be run on these demographic groups below
-demographic_list <- c('seniority_', 'phase_', 'fsm_', 'schoolGovernance_',
-                      'schoolSize_', 'ofsted_', 'region_', 'subject_', 'keyStage_')
+# Set vector of demographic strings of interest (phase and seniority)
+# Chi-square/Fisher's tests will be run on these demographic groups
+demographic_list <- c('seniority_', 'phase_')
 
 # Set p-value adjustment for this analysis
 # Most stringent would be N options * length of demographic_list above
-# Least stringent is N options (current approach)
-pvalue_adjust_value = length(responses$question)
+pvalue_adjust_value = 4
 pvalue_adjust_value
 
 ################################################################################
@@ -51,6 +49,7 @@ responses_cleaned_data <- clean_responses_data(responses)
 
 # Create list of separate data frames for each question option from cleaned data
 separated_options <- sep_options(responses_cleaned_data)
+separated_options <- separated_options[c("internal_training", "external_training")]
 
 # Clean up margin of error data for bar plots
 moe_cleaned_data <- clean_moe_data(moe)
@@ -74,6 +73,10 @@ responses_long <- pivot_longer(responses_cleaned_data,
 # Join on demographic with moe data
 responses_long <- left_join(responses_long, moe_long,by = c('demographic'))
 
+# Subset to training
+responses_long <- responses_long %>%
+  filter(question == 'internal_training'| question == 'external_training')
+
 ################################################################################
 ## Sanity check of Analysis before running all options 
 
@@ -86,6 +89,7 @@ internal_training_phase_data <- select_data(n_responders,
 internal_training_phase_contingency <- create_contingency_table(internal_training_phase_data)
 
 result <- run_chisq_test(internal_training_phase_contingency)
+result
 
 ################################################################################
 
@@ -101,30 +105,14 @@ all_results_list <- all_demographics(demographic_list,
 
 # Create named vector of pretty demographics for plotting and tables
 pretty_demographics = c('seniority_' =  'Teacher Seniority',
-                        'phase_'= 'School Phase',
-                        'schoolGovernance_' = 'School Governance',
-                        'region_' = 'Region',
-                        'schoolSize_' = 'School Size',
-                        'fsm_' = 'Free School Meals',
-                        'ofsted_' = 'Ofsted Rating',
-                        'subject_' = 'Subject',
-                        'keyStage_' = 'Key Stage',
-                        'funding_' = 'Funding',
-                        'fundingPhase_' = 'Funding & Phase',
-                        'age_' = 'Age',
-                        'gender_' = 'Gender',
-                        'experience_' = 'Teacher Experience',
-                        'seniorSplit_' = 'Mentors vs Non-Mentors (leadership)')
+                        'phase_'= 'School Phase'
+                        )
 
 # Create named vector of nicer titles for plotting purposes and tables
-pretty_questions = c('time' = 'Protected Time',
-                     "salary" = 'Salary',
-                     "collaborations" = 'Collaboration',
+pretty_questions = c(
                      "internal_training" = 'Internal Training',
-                     "external_training" = 'External Training',
-                     "events" = 'Celebration Events',
-                     "recognition" = 'Public recognition',
-                     "none" = 'None of these')
+                     "external_training" = 'External Training'
+                     )
 
 # Get pretty labels
 keys_to_process <- colnames(responses_cleaned_data)
@@ -146,41 +134,38 @@ for (demo_name in names(pretty_demographics)) {
                                all_results_list)
   
   # Save to results folder
-  # Flexibly determines size of figure by number of facets
-  # ggsave(
-  #   filename = sprintf('results/teacherTapp_quant/linecharts/facet_%s.png', 
-  #   demo_name),
-  #   plot = facet_line$plots,
-  #   width = 20, # Fixed width to ensure consistent facet sizes
-  #   height = 7,
-  #   units = 'cm',
-  #   dpi = 1000,
-  #   device = ragg::agg_png,
-  #   scaling = 1
-  # )
+  ggsave(
+    filename = sprintf('results/teacherTapp_quant/linecharts/facet_%s.png',
+    demo_name),
+    plot = facet_line$plots,
+    width = 7, # Fixed width to ensure consistent facet sizes
+    height = 7,
+    units = 'cm',
+    dpi = 1000,
+    device = ragg::agg_png,
+    scaling = 1
+  )
   
   # Add facet bar to bar_list
   line_list[[demo_name]] <- facet_line$plots
 }
 
 ################################################################################
-# Put seniority plot together with overall percentages for Sep 2024 report.
+# Put plots together
 
-source("closedResponse_overallPercentages.R")
-
-reportFigure <- overall_bar/ line_list$seniority_ + 
+TrainingFigure <- line_list$phase_ / line_list$seniority_ + 
   plot_annotation(title = 'What does your school do to support mentors to undertake their ITE mentoring role?',
-                  theme = theme(plot.title = element_text(size = 12, hjust = 0.5,
+                  theme = theme(plot.title = element_text(size = 10, hjust = 0.5,
                                                           face = "bold")),
                   tag_levels = 'A')& 
-  theme(plot.tag = element_text(size = 12))
+  theme(plot.tag = element_text(size = 10))
   
-reportFigure
+TrainingFigure
 
 ggsave(
-  filename = sprintf('results/teacherTapp_quant/reportFigure_niotColours.png'),
-  plot = reportFigure,
-  width = 20,
+  filename = sprintf('results/teacherTapp_quant/training_phase_seniority_lines.png'),
+  plot = TrainingFigure,
+  width = 15,
   height = 15,
   units = 'cm',
   dpi = 1000,
@@ -220,6 +205,27 @@ for (demo_name in names(pretty_demographics)) {
   bar_list[[demo_name]] <- facet_bar$plots
 }
 
+# Put plots together
+
+TrainingFigure <- bar_list$phase_ / bar_list$seniority_ + 
+  plot_annotation(title = 'What does your school do to support mentors to undertake their ITE mentoring role?',
+                  theme = theme(plot.title = element_text(size = 10, hjust = 0.5,
+                                                          face = "bold")),
+                  tag_levels = 'A')& 
+  theme(plot.tag = element_text(size = 10))
+
+TrainingFigure
+
+ggsave(
+  filename = sprintf('results/teacherTapp_quant/training_phase_seniority_bars.png'),
+  plot = TrainingFigure,
+  width = 15,
+  height = 15,
+  units = 'cm',
+  dpi = 1000,
+  device = ragg::agg_png,
+  scaling = 1
+)
 ################################################################################
 # Reporting
 

@@ -317,14 +317,10 @@ create_facetLine <- function(data,
   
   # Set levels of question for ordering
   data_subset$question <- factor(data_subset$question,
-                                 levels = c('time' ,
-                                            "salary" ,
+                                 levels = c(
                                             "internal_training",
-                                            "external_training",
-                                            "collaborations",
-                                            "events",
-                                            "recognition",
-                                            "none"))
+                                            "external_training"
+                                            ))
   
   # Order levels of certain demographic groups
   if (demographic_str == 'seniority_'){
@@ -333,62 +329,7 @@ create_facetLine <- function(data,
                                                  "seniority_middle_leader",
                                                  "seniority_slt_excl_head",
                                                  "seniority_headteacher"))
-    
-    data_subset$question <- factor(data_subset$question,
-                                      levels = c("external_training",
-                                                 "time",
-                                                 "internal_training",
-                                                 "collaborations",
-                                                 "none",
-                                                 "events",
-                                                 "salary",
-                                                 "recognition"))
   }
-  
-  if (demographic_str == 'schoolGovernance_'){
-    data_subset$demographic <- factor(data_subset$demographic,
-                                      levels = c("schoolGovernance_LA_non_comm",
-                                                 "schoolGovernance_LA_comm",
-                                                 "schoolGovernance_ind_acad",
-                                                 "schoolGovernance_small_MAT",
-                                                 "schoolGovernance_large_MAT"))
-  }
-  
-  if (demographic_str == 'schoolSize_'){
-    data_subset$demographic <- factor(data_subset$demographic,
-                                      levels = c("schoolSize_q1_small",
-                                                 "schoolSize_q2",
-                                                 "schoolSize_q3",
-                                                 "schoolSize_q4_large"
-                                      ))
-  }
-  
-  if (demographic_str == 'experience_'){
-    data_subset$demographic <- factor(data_subset$demographic,
-                                      levels = c("experience_Less_than_5",
-                                                 "experience_between_5_and_10",
-                                                 "experience_between_10_and_20",
-                                                 "experience_Over_20"
-                                      ))
-  }
-  
-  if (demographic_str == 'ofsted_'){
-    data_subset$demographic <- factor(data_subset$demographic,
-                                      levels = c("ofsted_RI_inadequate",
-                                                 "ofsted_good",
-                                                 "ofsted_outstanding"
-                                      ))
-  }
-  
-  if (demographic_str == 'seniorSplit_'){
-    data_subset$demographic <- factor(data_subset$demographic,
-                                      levels = c("seniorSplit_SLT_mentor",
-                                                 "seniorSplit_head_teacher_mentor",
-                                                 "seniorSplit_SLT_non_Mentor",
-                                                 "seniorSplit_head_teacher_non_Mentor"
-                                      ))
-  }
-  
   
   # Add a column to indicate if a question option is significant
   data_subset <- data_subset %>%
@@ -420,7 +361,7 @@ create_facetLine <- function(data,
     
     # Change facet labels
     facet_wrap_paginate(~ question, labeller = as_labeller(question_list),
-                        nrow = 1, ncol = 8, page = 1) +
+                        nrow = 1, ncol = 2, page = 1) +
     
     # Set to theme_light()
     theme_light() +
@@ -439,10 +380,10 @@ create_facetLine <- function(data,
     scale_y_continuous(breaks = c(0, 50, 100), limits = c(0, 100)) + 
     
     # Color code based on significance
-    scale_color_manual(values = c("TRUE" = "#B86BFF", "FALSE" = "black"))
+    scale_color_manual(values = c("TRUE" = "red", "FALSE" = "black"))
   
   # Return plot and number of facets (rows of data divided by n questions)
-  return(list(plots = plot, nfacets = nrow(data_subset) / 8))
+  return(list(plots = plot, nfacets = nrow(data_subset) / 2))
 }
 
 # Bar plots
@@ -460,14 +401,10 @@ create_facetBar <- function(data,
     filter(str_starts(demographic, demographic_str))
   
   data_subset$question <- factor(data_subset$question,
-                                 levels = c('time' ,
-                                            "salary" ,
+                                 levels = c(
                                             "internal_training",
-                                            "external_training",
-                                            "collaborations",
-                                            "events",
-                                            "recognition",
-                                            "none"))
+                                            "external_training"
+                                            ))
   
   if (demographic_str == 'seniority_'){
     data_subset$demographic <- factor(data_subset$demographic,
@@ -476,51 +413,6 @@ create_facetBar <- function(data,
                                                  "seniority_slt_excl_head",
                                                  "seniority_headteacher"))
   }
-  
-  if (demographic_str == 'schoolGovernance_'){
-    data_subset$demographic <- factor(data_subset$demographic,
-                                      levels = c("schoolGovernance_LA_non_comm",
-                                                 "schoolGovernance_LA_comm",
-                                                 "schoolGovernance_ind_acad",
-                                                 "schoolGovernance_small_MAT",
-                                                 "schoolGovernance_large_MAT"))
-  }
-  
-  if (demographic_str == 'schoolSize_'){
-    data_subset$demographic <- factor(data_subset$demographic,
-                                      levels = c("schoolSize_q1_small",
-                                                 "schoolSize_q2",
-                                                 "schoolSize_q3",
-                                                 "schoolSize_q4_large"
-                                      ))
-  }
-  
-  if (demographic_str == 'experience_'){
-    data_subset$demographic <- factor(data_subset$demographic,
-                                      levels = c("experience_Less_than_5",
-                                                 "experience_between_5_and_10",
-                                                 "experience_between_10_and_20",
-                                                 "experience_Over_20"
-                                      ))
-  }
-  
-  if (demographic_str == 'ofsted_'){
-    data_subset$demographic <- factor(data_subset$demographic,
-                                      levels = c("ofsted_RI_inadequate",
-                                                 "ofsted_good",
-                                                 "ofsted_outstanding"
-                                      ))
-  }
-  
-  if (demographic_str == 'seniorSplit_'){
-    data_subset$demographic <- factor(data_subset$demographic,
-                                      levels = c("seniorSplit_SLT_mentor",
-                                                 "seniorSplit_head_teacher_mentor",
-                                                 "seniorSplit_SLT_non_Mentor",
-                                                 "seniorSplit_head_teacher_non_Mentor"
-                                      ))
-  }
-  
   
   # Add a column to indicate if a question option is significant
   data_subset <- data_subset %>%
@@ -549,7 +441,7 @@ create_facetBar <- function(data,
     
     # Change facet labels
     facet_wrap_paginate(~ question, labeller = as_labeller(question_list),
-                        nrow = 1, ncol = 8, page = 1) +
+                        nrow = 1, ncol = 2, page = 1) +
     
     # Set to theme_light()
     theme_light() +
@@ -572,7 +464,7 @@ create_facetBar <- function(data,
     scale_fill_manual(values = c("TRUE" = "red", "FALSE" = "dark grey"))
   
   # Return plot and number of facets (rows of data divided by n questions)
-  return(list(plots = plot, nfacets = nrow(data_subset) / 8))
+  return(list(plots = plot, nfacets = nrow(data_subset) / 2))
 }
 
 ################################################################################
