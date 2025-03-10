@@ -1,0 +1,14 @@
+.DS_Store
+env/*
+env
+.Rhistory
+.Rapp.history
+.RData
+.RDataTmp
+.Ruserdata
+.Rproj.user/
+.Renviron
+
+data/
+results/
+.DS_Store
