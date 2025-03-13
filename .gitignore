@@ -9,6 +9,5 @@ env
 .Rproj.user/
 .Renviron
 
-data/
 results/
 .DS_Store

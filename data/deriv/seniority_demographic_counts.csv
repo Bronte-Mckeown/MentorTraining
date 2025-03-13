@@ -1,0 +1,203 @@
+seniority,demog_2,value,num_teachers
+Classroom Teacher,age_group,Age in 20s,42
+Classroom Teacher,age_group,Age in 30s,76
+Classroom Teacher,age_group,Age in 40s,77
+Classroom Teacher,age_group,Age in 50s+,27
+Classroom Teacher,experience,Between 10 and 20 years,62
+Classroom Teacher,experience,Between 5 and 10 years,75
+Classroom Teacher,experience,Less than 5 years,39
+Classroom Teacher,experience,Over 20 years,48
+Classroom Teacher,fsm_quartile,Q1 Affluent,45
+Classroom Teacher,fsm_quartile,Q2,56
+Classroom Teacher,fsm_quartile,Q3,54
+Classroom Teacher,fsm_quartile,Q4 Deprived,38
+Classroom Teacher,funding_phase,Private Primary,2
+Classroom Teacher,funding_phase,Private Secondary,11
+Classroom Teacher,funding_phase,State-funded Primary,61
+Classroom Teacher,funding_phase,State-funded Secondary,150
+Classroom Teacher,gender,Female,184
+Classroom Teacher,gender,Male,38
+Classroom Teacher,governance,Independent,10
+Classroom Teacher,governance,LA community,35
+Classroom Teacher,governance,LA non-community,24
+Classroom Teacher,governance,Large MAT (N>3),102
+Classroom Teacher,governance,Small MAT (N<=3),14
+Classroom Teacher,governance,Stand-alone Academy,27
+Classroom Teacher,ofsted,Good,143
+Classroom Teacher,ofsted,Outstanding,34
+Classroom Teacher,ofsted,Requires Improvement or Inadequate,26
+Classroom Teacher,phase,Primary,63
+Classroom Teacher,phase,Secondary,161
+Classroom Teacher,school_funding,Private School,13
+Classroom Teacher,school_funding,State-funded school,211
+Classroom Teacher,school_size_quartile,Q1 Small,56
+Classroom Teacher,school_size_quartile,Q2,46
+Classroom Teacher,school_size_quartile,Q3,60
+Classroom Teacher,school_size_quartile,Q4 Large,41
+Classroom Teacher,teaching_region,East of England,34
+Classroom Teacher,teaching_region,London,16
+Classroom Teacher,teaching_region,Midlands,35
+Classroom Teacher,teaching_region,North West,29
+Classroom Teacher,teaching_region,South East,49
+Classroom Teacher,teaching_region,South West,20
+Classroom Teacher,teaching_region,Yorkshire and North East,32
+Classroom Teacher,teaching_subject,Arts incl D&T,8
+Classroom Teacher,teaching_subject,English,37
+Classroom Teacher,teaching_subject,EYFS/KS1,21
+Classroom Teacher,teaching_subject,Humanities,29
+Classroom Teacher,teaching_subject,KS2,37
+Classroom Teacher,teaching_subject,Languages,10
+Classroom Teacher,teaching_subject,Maths,36
+Classroom Teacher,teaching_subject,Other incl PE,5
+Classroom Teacher,teaching_subject,Science,38
+Headteacher,age_group,Age in 30s,53
+Headteacher,age_group,Age in 40s,231
+Headteacher,age_group,Age in 50s+,190
+Headteacher,experience,Between 10 and 20 years,133
+Headteacher,experience,Between 5 and 10 years,15
+Headteacher,experience,Over 20 years,307
+Headteacher,fsm_quartile,Q1 Affluent,109
+Headteacher,fsm_quartile,Q2,127
+Headteacher,fsm_quartile,Q3,108
+Headteacher,fsm_quartile,Q4 Deprived,85
+Headteacher,funding_phase,Private Primary,3
+Headteacher,funding_phase,Private Secondary,6
+Headteacher,funding_phase,State-funded Primary,330
+Headteacher,funding_phase,State-funded Secondary,120
+Headteacher,gender,Female,334
+Headteacher,gender,Male,142
+Headteacher,governance,Independent,5
+Headteacher,governance,LA community,144
+Headteacher,governance,LA non-community,78
+Headteacher,governance,Large MAT (N>3),161
+Headteacher,governance,Small MAT (N<=3),23
+Headteacher,governance,Stand-alone Academy,32
+Headteacher,ofsted,Good,338
+Headteacher,ofsted,Outstanding,60
+Headteacher,ofsted,Requires Improvement or Inadequate,56
+Headteacher,phase,Primary,345
+Headteacher,phase,Secondary,132
+Headteacher,school_funding,Private School,9
+Headteacher,school_funding,State-funded school,450
+Headteacher,school_size_quartile,Q1 Small,180
+Headteacher,school_size_quartile,Q2,107
+Headteacher,school_size_quartile,Q3,83
+Headteacher,school_size_quartile,Q4 Large,64
+Headteacher,teaching_region,East of England,59
+Headteacher,teaching_region,London,70
+Headteacher,teaching_region,Midlands,61
+Headteacher,teaching_region,North West,42
+Headteacher,teaching_region,South East,122
+Headteacher,teaching_region,South West,46
+Headteacher,teaching_region,Yorkshire and North East,58
+Headteacher,teaching_subject,Arts incl D&T,7
+Headteacher,teaching_subject,English,15
+Headteacher,teaching_subject,EYFS/KS1,31
+Headteacher,teaching_subject,Humanities,17
+Headteacher,teaching_subject,KS2,84
+Headteacher,teaching_subject,Languages,9
+Headteacher,teaching_subject,Maths,16
+Headteacher,teaching_subject,Other incl PE,21
+Headteacher,teaching_subject,Science,14
+Middle Leader,age_group,Age in 20s,74
+Middle Leader,age_group,Age in 30s,227
+Middle Leader,age_group,Age in 40s,165
+Middle Leader,age_group,Age in 50s+,67
+Middle Leader,experience,Between 10 and 20 years,214
+Middle Leader,experience,Between 5 and 10 years,163
+Middle Leader,experience,Less than 5 years,42
+Middle Leader,experience,Over 20 years,117
+Middle Leader,fsm_quartile,Q1 Affluent,118
+Middle Leader,fsm_quartile,Q2,106
+Middle Leader,fsm_quartile,Q3,115
+Middle Leader,fsm_quartile,Q4 Deprived,132
+Middle Leader,funding_phase,Private Primary,2
+Middle Leader,funding_phase,Private Secondary,19
+Middle Leader,funding_phase,State-funded Primary,94
+Middle Leader,funding_phase,State-funded Secondary,418
+Middle Leader,gender,Female,393
+Middle Leader,gender,Male,141
+Middle Leader,governance,Independent,20
+Middle Leader,governance,LA community,75
+Middle Leader,governance,LA non-community,59
+Middle Leader,governance,Large MAT (N>3),243
+Middle Leader,governance,Small MAT (N<=3),36
+Middle Leader,governance,Stand-alone Academy,76
+Middle Leader,ofsted,Good,348
+Middle Leader,ofsted,Outstanding,87
+Middle Leader,ofsted,Requires Improvement or Inadequate,64
+Middle Leader,phase,Primary,96
+Middle Leader,phase,Secondary,440
+Middle Leader,school_funding,Private School,21
+Middle Leader,school_funding,State-funded school,512
+Middle Leader,school_size_quartile,Q1 Small,145
+Middle Leader,school_size_quartile,Q2,141
+Middle Leader,school_size_quartile,Q3,109
+Middle Leader,school_size_quartile,Q4 Large,96
+Middle Leader,teaching_region,East of England,64
+Middle Leader,teaching_region,London,96
+Middle Leader,teaching_region,Midlands,97
+Middle Leader,teaching_region,North West,45
+Middle Leader,teaching_region,South East,117
+Middle Leader,teaching_region,South West,57
+Middle Leader,teaching_region,Yorkshire and North East,47
+Middle Leader,teaching_subject,Arts incl D&T,34
+Middle Leader,teaching_subject,English,93
+Middle Leader,teaching_subject,EYFS/KS1,29
+Middle Leader,teaching_subject,Humanities,107
+Middle Leader,teaching_subject,KS2,60
+Middle Leader,teaching_subject,Languages,26
+Middle Leader,teaching_subject,Maths,62
+Middle Leader,teaching_subject,Other incl PE,36
+Middle Leader,teaching_subject,Science,79
+SLT (excl head),age_group,Age in 20s,34
+SLT (excl head),age_group,Age in 30s,557
+SLT (excl head),age_group,Age in 40s,677
+SLT (excl head),age_group,Age in 50s+,325
+SLT (excl head),experience,Between 10 and 20 years,790
+SLT (excl head),experience,Between 5 and 10 years,160
+SLT (excl head),experience,Less than 5 years,8
+SLT (excl head),experience,Over 20 years,612
+SLT (excl head),fsm_quartile,Q1 Affluent,338
+SLT (excl head),fsm_quartile,Q2,341
+SLT (excl head),fsm_quartile,Q3,380
+SLT (excl head),fsm_quartile,Q4 Deprived,322
+SLT (excl head),funding_phase,Private Primary,25
+SLT (excl head),funding_phase,Private Secondary,79
+SLT (excl head),funding_phase,State-funded Primary,651
+SLT (excl head),funding_phase,State-funded Secondary,801
+SLT (excl head),gender,Female,1194
+SLT (excl head),gender,Male,402
+SLT (excl head),governance,Independent,95
+SLT (excl head),governance,LA community,329
+SLT (excl head),governance,LA non-community,225
+SLT (excl head),governance,Large MAT (N>3),619
+SLT (excl head),governance,Small MAT (N<=3),67
+SLT (excl head),governance,Stand-alone Academy,167
+SLT (excl head),ofsted,Good,1011
+SLT (excl head),ofsted,Outstanding,249
+SLT (excl head),ofsted,Requires Improvement or Inadequate,217
+SLT (excl head),phase,Primary,697
+SLT (excl head),phase,Secondary,903
+SLT (excl head),school_funding,Private School,104
+SLT (excl head),school_funding,State-funded school,1452
+SLT (excl head),school_size_quartile,Q1 Small,469
+SLT (excl head),school_size_quartile,Q2,369
+SLT (excl head),school_size_quartile,Q3,344
+SLT (excl head),school_size_quartile,Q4 Large,289
+SLT (excl head),teaching_region,East of England,209
+SLT (excl head),teaching_region,London,238
+SLT (excl head),teaching_region,Midlands,242
+SLT (excl head),teaching_region,North West,165
+SLT (excl head),teaching_region,South East,315
+SLT (excl head),teaching_region,South West,166
+SLT (excl head),teaching_region,Yorkshire and North East,209
+SLT (excl head),teaching_subject,Arts incl D&T,56
+SLT (excl head),teaching_subject,English,190
+SLT (excl head),teaching_subject,EYFS/KS1,159
+SLT (excl head),teaching_subject,Humanities,188
+SLT (excl head),teaching_subject,KS2,363
+SLT (excl head),teaching_subject,Languages,56
+SLT (excl head),teaching_subject,Maths,128
+SLT (excl head),teaching_subject,Other incl PE,123
+SLT (excl head),teaching_subject,Science,146
